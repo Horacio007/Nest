@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, ParseUUIDPipe, Patch, Post } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -14,7 +14,7 @@ export class CarsController {
     }
 
     @Get(':id')
-    async getCarById(@Param('id', ParseIntPipe) id:number) {
+    async getCarById(@Param('id', ParseUUIDPipe) id:string) {
         return await this.carsService.findOneById(id);
     }
 
