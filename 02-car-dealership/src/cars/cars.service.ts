@@ -77,7 +77,7 @@ export class CarsService {
     }
 
     fillCarsWithSeedData(cars:Car[]):void {
-        
+        this.cars = cars;
     }
 
 }

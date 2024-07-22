@@ -1,3 +1,14 @@
+<p align="center">
+    <a href="https://nestjs.com" target="blank"><img src="https://nestjs.com/img/logo-small.svg" 
+    width="200" alt="Nest Logo" /></a>
+</p>
+
+# Car DealerShip
+PopulateDB
+```
+http://localhost:3000/seed
+```
+
 # Temas puntuales:
 * Módulos
 * Controladores (Post, Patch, Get, Delete)
@@ -20,3 +31,4 @@
 * Problemas con inyección de dependencias de módulos externos
 * Brands CRUD completo
 * Endpoints
+

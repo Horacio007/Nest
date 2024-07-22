@@ -57,6 +57,6 @@ export class BrandsService {
   }
 
   fillBrandsWithSeedData(brands:Brand[]):void {
-        
+    this.brands = brands;
   }
 }
