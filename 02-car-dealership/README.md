@@ -13,3 +13,10 @@
 * Class Transformer
 * Seguir el principio DRY (Don't repeat yourself)
 * Algunos decoradores del Class Validator útiles
+* SEED Endpoint
+* Llenar data de Carros y Marcas
+* Comunicar módulo seed, con los otros módulos de nuestra aplicación
+* Errores comunes a la hora de utilizar módulos enlazados
+* Problemas con inyección de dependencias de módulos externos
+* Brands CRUD completo
+* Endpoints
