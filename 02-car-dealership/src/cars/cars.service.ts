@@ -32,7 +32,7 @@ export class CarsService {
         return this.cars;
     }
 
-    findOneById(id:string) {
+    findOneById(id:string):Car {
         const car = this.cars.find(x => x.id === id);
         
         if(!car) throw new NotFoundException(`Car with id=>${id} not found.`);
@@ -51,7 +51,21 @@ export class CarsService {
     }
 
     update(id:string, updateCarDto:UpdateCarDto):UpdateCarDto {
-        return {}
+        let carDB = this.findOneById(id);
+        this.cars = this.cars.map(car => {
+            if (car.id === id) {
+                carDB = {
+                    ...carDB,
+                    ...updateCarDto,
+                    id
+                }
+                return carDB;
+            }
+
+            return car;
+        });
+
+        return carDB;
     }
 
 }
