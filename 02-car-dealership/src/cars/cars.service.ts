@@ -7,16 +7,15 @@ import { CreateCarDto, UpdateCarDto } from './dto';
 export class CarsService {
 
     private cars:Car[] = [
-        {
-            id:uuid(),
-            brand:'Toyota',
-            model:'Hilux'
-        }
-        // , {
+        // {
+        //     id:uuid(),
+        //     brand:'Toyota',
+        //     model:'Hilux'
+        // }, {
         //     id:uuid(),
         //     brand:'Volkswagen',
         //     model:'Jetta'
-        // }, 
+        // },
         // {
         //     id:uuid(),
         //     brand:'Jeep',
@@ -35,7 +34,7 @@ export class CarsService {
 
     findOneById(id:string):Car {
         const car = this.cars.find(x => x.id === id);
-        
+
         if(!car) throw new NotFoundException(`Car with id=>${id} not found.`);
 
         return car;
@@ -47,7 +46,7 @@ export class CarsService {
             ...createCarDto
         };
         this.cars.push(car);
-        
+
         return car;
     }
 
@@ -75,6 +74,10 @@ export class CarsService {
     delete(id:string) {
         let carDB = this.findOneById(id);
         this.cars = this.cars.filter(car => car.id !== carDB.id);
+    }
+
+    fillCarsWithSeedData(cars:Car[]):void {
+        
     }
 
 }

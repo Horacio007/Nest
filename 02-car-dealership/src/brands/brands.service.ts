@@ -7,11 +7,11 @@ import { v7 as uuid } from 'uuid';
 export class BrandsService {
 
   private brands:Brand[] = [
-    {
-      id: uuid(),
-      name: 'Mazzerati',
-      createdAt: new Date().getTime()
-    }
+    // {
+    //   id: uuid(),
+    //   name: 'Mazzerati',
+    //   createdAt: new Date().getTime()
+    // }
   ]
 
   create(createBrandDto: CreateBrandDto):Brand {
@@ -54,5 +54,9 @@ export class BrandsService {
   remove(id: string):void {
     let brandDB = this.findOne(id);
     this.brands = this.brands.filter(brand => brand.id !== brandDB.id);
+  }
+
+  fillBrandsWithSeedData(brands:Brand[]):void {
+        
   }
 }
