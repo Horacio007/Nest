@@ -15,7 +15,7 @@ export class CarsController {
 
     @Get(':id')
     async getCarById(@Param('id', ParseIntPipe) id:number) {
-        return this.carsService.findOneById(id);
+        return await this.carsService.findOneById(id);
     }
 
 }
