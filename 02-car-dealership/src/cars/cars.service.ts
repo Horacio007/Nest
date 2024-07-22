@@ -11,21 +11,22 @@ export class CarsService {
             id:uuid(),
             brand:'Toyota',
             model:'Hilux'
-        }, {
-            id:uuid(),
-            brand:'Volkswagen',
-            model:'Jetta'
-        }, 
-        {
-            id:uuid(),
-            brand:'Jeep',
-            model:'GrandCheroke'
-        },
-        {
-            id:uuid(),
-            brand:'Honda',
-            model:'Civic'
         }
+        // , {
+        //     id:uuid(),
+        //     brand:'Volkswagen',
+        //     model:'Jetta'
+        // }, 
+        // {
+        //     id:uuid(),
+        //     brand:'Jeep',
+        //     model:'GrandCheroke'
+        // },
+        // {
+        //     id:uuid(),
+        //     brand:'Honda',
+        //     model:'Civic'
+        // }
     ];
 
     findAll() {
