@@ -1,22 +1,21 @@
-import { Controller, Get, Injectable, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
 export class CarsController {
-    @Injectable(CarsService);
+
+    constructor(private readonly carsService:CarsService) {
+
+    }
     
     @Get()
     getAllCars() {
-        return this.cars;
+        return this.carsService.findAll();
     }
 
     @Get(':id')
-    getCarById(@Param('id') id:string) {
-        if(!this.cars[id]) return {id:'no existe'}
-        
-        return {
-            id: this.cars[id]
-        };
+    async getCarById(@Param('id', ParseIntPipe) id:number) {
+        return this.carsService.findOneById(id);
     }
 
 }
