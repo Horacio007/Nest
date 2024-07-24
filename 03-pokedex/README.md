@@ -39,3 +39,12 @@ http://localhost:3000/api/v2/seed
 * DTOs para Query parameters
 * Transformaciones de DTOs
 * Diferentes formas de hacer inserciones por lote y varias formas de lograrlo.
+* Dockerizacion
+* Mongo Atlas
+* Env file
+* joi
+* Validation Schemas
+* Configuration Module
+* Recomendaciones para un Readme útil
+* Despliegues
+* Dockerfile
