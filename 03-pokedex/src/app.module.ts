@@ -22,8 +22,4 @@ import { EnvConfiguration } from './config/app.config';
     SeedModule
   ]
 })
-export default class AppModule {
-  constructor () {
-    console.log(process.env)
-  }
-}
+export default class AppModule { }
