@@ -16,6 +16,10 @@ npm i -g @nestjs/cli
 ```
 docker-compose up -d
 ```
+5. Reconstruir la base de datos con la semilla (solo si es desarrollo y la base esta vacia)
+```
+http://localhost:3000/api/v2/seed
+```
 ## Stack usado
 * MongoDB
 * Nest
@@ -29,3 +33,9 @@ docker-compose up -d
 * Modelos
 * DTOs y sus extensiones
 * Respaldar a Github
+* Uso de modelos en diferentes módulos
+* SEED para llenar la base de datos
+* Paginación de resultados
+* DTOs para Query parameters
+* Transformaciones de DTOs
+* Diferentes formas de hacer inserciones por lote y varias formas de lograrlo.
