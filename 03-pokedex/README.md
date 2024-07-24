@@ -29,6 +29,8 @@ http://localhost:3000/api/v2/seed
 ## Stack usado
 * MongoDB
 * Nest
+# Production Build
+1. Crear el archivo ```.env.prod```
 
 # Temas puntuales
 * Validaciones
