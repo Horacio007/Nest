@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Gender } from "src/gender/entities/gender.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -34,15 +35,12 @@ export class Product {
     })
     stock:number;
 
-    @Column('simple-array',{
-        select: false
-    })
-    sizes:string[];
+    @Column({ type: 'uuid' })
+    genderId: string;
 
-    @Column('varchar',{
-        length:10
-    })
-    gender:string;
+    // @OneToOne(type => Gender)
+    // @JoinColumn()
+    // gender:Gender;
     
     // tags
     // images

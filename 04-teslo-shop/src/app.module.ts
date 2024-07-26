@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
+import { GenderModule } from './gender/gender.module';
+import { CommonModule } from './common/common.module';
+import { SizesModule } from './sizes/sizes.module';
 
 @Module({
   imports: [
@@ -24,9 +27,31 @@ import { ProductsModule } from './products/products.module';
         }
       }
     }),
-    ProductsModule
+    TypeOrmModule.forRoot({
+      name:'PoS',
+      type: 'mssql',
+      host: '192.168.42.52',
+      //port: +process.env.DB_PORT,
+      database: 'PoS',
+      username: process.env.DB_USERNAME,
+      password: 'B1Admin',
+      autoLoadEntities: true,
+      synchronize: true,
+      extra: {
+        driver: "msnodesqlv8",
+        options: {
+          trustedConnection: true,
+          trustServerCertificate: true,
+          encrypt: false,
+        }
+      }
+    }),
+    ProductsModule,
+    GenderModule,
+    CommonModule,
+    SizesModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

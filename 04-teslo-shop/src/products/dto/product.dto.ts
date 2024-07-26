@@ -1,9 +1,13 @@
 import { Type } from "class-transformer";
-import { ArrayMinSize, IsArray, IsIn, IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, Min, MinLength, ValidateNested } from "class-validator";
+import { ArrayMinSize, IsArray, IsIn, IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, IsUUID, Min, MinLength, ValidateNested } from "class-validator";
 import { GenderDto } from "src/gender/dto/gender.dto";
 import { SizeDto } from "src/sizes/dto/size.dto";
 
-export class CreateProductDto {
+export class ProductDto {
+
+    @IsString()
+    @IsUUID()
+    genderId:string;
     
     @IsString()
     @MinLength(1)
