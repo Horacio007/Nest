@@ -4,10 +4,11 @@ import { ProductsController } from './products.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { CommonModule } from 'src/common/common.module';
+import { BussinesRulesService } from './validations/bussines-rules.service';
 
 @Module({
   controllers: [ProductsController],
-  providers: [ProductsService],
+  providers: [ProductsService, BussinesRulesService],
   imports: [TypeOrmModule.forFeature([
       Product
     ]),

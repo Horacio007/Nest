@@ -4,7 +4,7 @@ import { UpdateGenderDto } from './dto/update-gender.dto';
 import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
 import { DataSource, QueryFailedError, Repository } from 'typeorm';
 import { Gender } from './entities/gender.entity';
-import { CommonService } from 'src/common/common.service';
+import { CommonFunctionsService } from 'src/common/common.functions.service';
 
 @Injectable()
 export class GenderService {
@@ -18,7 +18,7 @@ export class GenderService {
     private readonly genderRepository:Repository<Gender>,
     @InjectDataSource('default')
     private readonly dataSource:DataSource,
-    private readonly commonService:CommonService
+    private readonly commonFunctionsService:CommonFunctionsService
   ) { }
 
 // #region Metodos
@@ -26,7 +26,7 @@ export class GenderService {
   async create(createGenderDto: CreateGenderDto) {
     try {
       const {clave, name} = createGenderDto;
-      const genderId = this.commonService.getUuid();
+      const genderId = this.commonFunctionsService.getUuid();
       await this.dataSource.manager.query(this.spCreateGender,[clave, name,genderId]);
       
       const gender:Gender = {genderId,...createGenderDto}

@@ -38,7 +38,7 @@ export class ProductDto {
     @ArrayMinSize(1)
     @ValidateNested({each:true})
     @Type(() => SizeDto)
-    sizes: SizeDto[];
+    sizes?: SizeDto[];
 
     @Type(() => GenderDto)
     @ValidateNested()

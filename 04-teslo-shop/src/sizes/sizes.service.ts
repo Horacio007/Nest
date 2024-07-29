@@ -4,7 +4,7 @@ import { UpdateSizeDto } from './dto/update-size.dto';
 import { Size } from './entities/size.entity';
 import { DataSource, Repository } from 'typeorm';
 import { InjectRepository, InjectDataSource } from '@nestjs/typeorm';
-import { CommonService } from 'src/common/common.service';
+import { CommonFunctionsService } from 'src/common/common.functions.service';
 
 @Injectable()
 export class SizesService {
@@ -18,7 +18,7 @@ export class SizesService {
     private readonly sizeRepository:Repository<Size>,
     @InjectDataSource('default')
     private readonly dataSource:DataSource,
-    private readonly commonService:CommonService
+    private readonly commonFunctionsService:CommonFunctionsService
   ) { }
 
 // #region Metodos
@@ -26,7 +26,7 @@ export class SizesService {
   async create(createSizeDto: CreateSizeDto) {
     try {
       const {clave, name} = createSizeDto;
-      const sizeId = this.commonService.getUuid();
+      const sizeId = this.commonFunctionsService.getUuid();
       await this.dataSource.manager.query(this.spCreateSize,[clave, name,sizeId]);
       
       const gender:Size = {sizeId,...createSizeDto}

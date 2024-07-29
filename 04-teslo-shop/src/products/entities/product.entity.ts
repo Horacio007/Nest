@@ -1,5 +1,5 @@
 import { Gender } from "src/gender/entities/gender.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -37,10 +37,6 @@ export class Product {
 
     @Column({ type: 'uuid' })
     genderId: string;
-
-    // @OneToOne(type => Gender)
-    // @JoinColumn()
-    // gender:Gender;
     
     // tags
     // images
