@@ -2,8 +2,9 @@ import { Type } from "class-transformer";
 import { ArrayMinSize, IsArray, IsIn, IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, IsUUID, Min, MinLength, ValidateNested } from "class-validator";
 import { GenderDto } from "src/gender/dto/gender.dto";
 import { SizeDto } from "src/sizes/dto/size.dto";
+import { IProduct } from "../interfaces/product.interface";
 
-export class ProductDto {
+export class ProductDto implements IProduct {
 
     @IsString()
     @IsUUID()

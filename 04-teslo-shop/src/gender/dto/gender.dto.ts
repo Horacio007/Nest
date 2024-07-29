@@ -1,6 +1,7 @@
 import { IsString, IsUUID, MinLength } from "class-validator";
+import { IGender } from "../interfaces/gender.interface";
 
-export class GenderDto {
+export class GenderDto implements IGender {
 
     @IsString()
     @IsUUID()

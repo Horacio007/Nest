@@ -5,7 +5,6 @@ import { ProductsModule } from './products/products.module';
 import { GenderModule } from './gender/gender.module';
 import { CommonModule } from './common/common.module';
 import { SizesModule } from './sizes/sizes.module';
-import { ProductsSizesModule } from './products-sizes/products-sizes.module';
 import { ProductSizeModule } from './product-size/product-size.module';
 
 @Module({
@@ -52,7 +51,6 @@ import { ProductSizeModule } from './product-size/product-size.module';
     GenderModule,
     CommonModule,
     SizesModule,
-    ProductsSizesModule,
     ProductSizeModule,
   ],
   controllers: [],

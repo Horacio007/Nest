@@ -1,7 +1,8 @@
 import { Type } from "class-transformer";
 import { IsString, IsUUID, MinLength } from "class-validator";
+import { ISize } from "../interfaces/size.interface";
 
-export class SizeDto {
+export class SizeDto implements ISize {
     
     @IsString()
     @IsUUID()
