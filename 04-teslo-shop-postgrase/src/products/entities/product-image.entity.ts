@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "./index";
 
 @Entity()
 export class ProductImage{
@@ -8,4 +9,11 @@ export class ProductImage{
 
     @Column('text')
     url:string;
+
+    @ManyToOne(
+        () => Product,
+        (product) => product.images
+    )
+    @JoinColumn({  name: "productId" })
+    product:Product;
 }
