@@ -123,4 +123,16 @@ export class ProductsService {
     // const product = await this.findOnePlain(id); 
     await this.productRepository.remove(product);
   }
+
+  async deleteAllProducts() {
+    const query = this.productRepository.createQueryBuilder('product');
+    try {
+      return await query
+        .delete()
+        .where({})
+        .execute();
+    } catch (error) {
+      this.errorHandleService.errorHandleDB(error);
+    }
+  }
 }
