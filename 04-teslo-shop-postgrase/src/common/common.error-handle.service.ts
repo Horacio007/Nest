@@ -10,7 +10,9 @@ export class ErrorHandleService {
             case 23505:
                 throw new BadRequestException(`${error.severity} => ${error.detail}`);
                 break;
-        
+            case 22001:
+                throw new BadRequestException(`${error.severity} => ${error.detail}`);
+                break;
             default:
                 console.log(error);
                 this.logger.error(error);

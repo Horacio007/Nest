@@ -18,8 +18,7 @@ export class Product {
     })
     price:number;
 
-    @Column('varchar',{
-        length:100,
+    @Column('text',{
         nullable: true
     })
     description:string;
