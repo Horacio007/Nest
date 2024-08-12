@@ -7,6 +7,7 @@ import { ErrorHandleService } from 'src/common/common.error-handle.service';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { FunctionsService } from 'src/common/common.functions.service';
 import { Product, ProductImage } from './entities';
+import { TypeError } from 'src/common/enums/common.error-handle.enum';
 
 @Injectable()
 export class ProductsService {
@@ -71,7 +72,7 @@ export class ProductsService {
         .getOne();
     }
 
-    if (!product) this.errorHandleService.errorHandle(`Product with search end "${term}" not found`, 'nfe'); 
+    if (!product) this.errorHandleService.errorHandle(`Product with search end "${term}" not found`, TypeError.NotFoundException); 
 
     return product;
   }
@@ -89,7 +90,7 @@ export class ProductsService {
     const {images, ...toUpdate} = updateProductDto;
     const product = await this.productRepository.preload({productId:id, ...toUpdate});
 
-    if (!product) this.errorHandleService.errorHandle(`Product with id "${id}" not found`, 'nfe'); 
+    if (!product) this.errorHandleService.errorHandle(`Product with id "${id}" not found`, TypeError.NotFoundException); 
 
     const queryRunner = this.dataSourse.createQueryRunner();
     await queryRunner.connect()

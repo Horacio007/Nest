@@ -1,9 +1,12 @@
 import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { ErrorHandleDB } from './interfaces/error-handler.interface';
+import { TypeError } from './enums/common.error-handle.enum';
 
 @Injectable()
 export class ErrorHandleService {
     private readonly logger = new Logger('ErrorHandleService');
+
+    public errorTypes 
 
     public errorHandleDB(error: ErrorHandleDB){
         switch (+error.code) {
@@ -22,10 +25,16 @@ export class ErrorHandleService {
         
     }
 
-    public errorHandle(message: string, method:string){
+    public errorHandle(message: string, method:TypeError){
         switch (method) {
-            case 'nfe':
+            case TypeError.NotFoundException:
                 throw new NotFoundException(`${message}`);
+                break;
+            case TypeError.Error:
+                throw new Error(`${message}`);
+                break;
+            case TypeError.BadRequestException:
+                throw new BadRequestException(`${message}`);
                 break;
         
             default:
