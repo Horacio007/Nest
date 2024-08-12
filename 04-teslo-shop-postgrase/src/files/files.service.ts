@@ -7,7 +7,9 @@ import { TypeError } from 'src/common/enums/common.error-handle.enum';
 @Injectable()
 export class FilesService {
 
-    constructor( private readonly errorHandleService:ErrorHandleService) { }
+    constructor( 
+        private readonly errorHandleService:ErrorHandleService
+    ) { }
   
     getStaticProductImage(imageName:string) {
         const path = join(__dirname, '../../static/products', imageName);

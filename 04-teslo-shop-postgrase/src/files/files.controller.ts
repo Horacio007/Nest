@@ -6,10 +6,15 @@ import { TypeError } from 'src/common/enums/common.error-handle.enum';
 import { diskStorage } from 'multer';
 import { fileFilter, fileNamer } from './helpers';
 import { Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('files')
 export class FilesController {
-  constructor(private readonly filesService: FilesService, private readonly errorHandleService:ErrorHandleService) {}
+  constructor(
+    private readonly filesService: FilesService, 
+    private readonly errorHandleService:ErrorHandleService,
+    private readonly configService:ConfigService
+  ) {}
 
   @Get('producto/:imageName')
   findProductImage(
@@ -35,7 +40,7 @@ export class FilesController {
     
     if (!file) this.errorHandleService.errorHandle('Make sure that the file is an image', TypeError.BadRequestException);
 
-    const secureUrl = `${file.filename}`;
+    const secureUrl = `${this.configService.get('HOST_API')}/files/producto/${file.filename}`;
 
     return {
       secureUrl
