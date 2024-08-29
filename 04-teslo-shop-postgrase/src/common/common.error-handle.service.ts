@@ -8,7 +8,7 @@ export class ErrorHandleService {
 
     public errorTypes 
 
-    public errorHandleDB(error: ErrorHandleDB){
+    public errorHandleDB(error: ErrorHandleDB):never {
         switch (+error.code) {
             case 23505:
                 throw new BadRequestException(`${error.severity} => ${error.detail}`);
@@ -25,7 +25,7 @@ export class ErrorHandleService {
         
     }
 
-    public errorHandle(message: string, method:TypeError){
+    public errorHandle(message: string, method:TypeError):never {
         switch (method) {
             case TypeError.NotFoundException:
                 throw new NotFoundException(`${message}`);
