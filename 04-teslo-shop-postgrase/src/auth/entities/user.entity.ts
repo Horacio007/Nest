@@ -12,9 +12,7 @@ export class User {
     })
     email: string;
 
-    @Column('varchar',{
-        length: 50
-    })
+    @Column('text')
     password: string;
 
     @Column('varchar',{
