@@ -7,10 +7,11 @@ import { CommonModule } from 'src/common/common.module';
 import { PassportModule, PassportStrategy } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
   imports: [
     TypeOrmModule.forFeature([User]),
     CommonModule,
@@ -26,11 +27,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         return {
           secret: configService.get('JWT_SECRET'),
           signOptions: {
-            expiresIn: '5m'
+            expiresIn: '2h'
           }
         }
       },
     }),
+    ConfigModule
     // JwtModule.register({
     //   secret: process.env.JWT_SECRET,
     //   signOptions: {
@@ -38,6 +40,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     //   }
     // })
   ],
-  exports:[TypeOrmModule]
+  exports:[TypeOrmModule, JwtStrategy, PassportModule, JwtModule]
 })
 export class AuthModule {}
