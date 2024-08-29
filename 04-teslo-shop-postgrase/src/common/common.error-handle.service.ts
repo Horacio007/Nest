@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { ErrorHandleDB } from './interfaces/error-handler.interface';
 import { TypeError } from './enums/common.error-handle.enum';
 
@@ -35,6 +35,9 @@ export class ErrorHandleService {
                 break;
             case TypeError.BadRequestException:
                 throw new BadRequestException(`${message}`);
+                break;
+            case TypeError.UnauthorizedException:
+                throw new UnauthorizedException(`${message}`);
                 break;
         
             default:
