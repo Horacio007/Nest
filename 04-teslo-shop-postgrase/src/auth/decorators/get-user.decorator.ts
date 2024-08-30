@@ -8,6 +8,14 @@ export const GetUser = createParamDecorator(
 
         if ( !user ) throw new InternalServerErrorException('User not found.')
         
-        return user;
+        switch (data) {
+            case 'email':
+                return user.email;
+                break;
+        
+            default:
+                return user;
+                break;
+        }
     }
 );
